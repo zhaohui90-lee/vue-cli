@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+  //
+  // setTimeout(function () {
+  //   console.log(this)
+  // },1000)
+  //
+  // setTimeout(() => {
+  //   console.log(this)
+  // },1000)
+
+  // 结论： 箭头函数中的this引用的是最近作用域的this
+  const obj = {
+    name() {
+      setTimeout(function () {
+        console.log(this) // window
+      })
+
+      console.log(this) // obj
+
+      setTimeout(() => {
+        console.log(this) // obj
+      })
+
+    }
+  }
+  obj.name()
+
+  function f() {
+    console.log(this)
+  }
+  // f()
+</script>
+</body>
+</html>
